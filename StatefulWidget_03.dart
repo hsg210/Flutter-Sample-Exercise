@@ -44,18 +44,37 @@ class _HomeContentState extends State<HomeContent> {
     // TODO: implement build
     return Center(
       child: Column(
-        children: <Widget>[_getButton(), Text("當前計數:$_counter")],
+        mainAxisAlignment: MainAxisAlignment.center, //畫面元件中央垂直置中
+        children: <Widget>[
+          _getButton(),
+          Text(
+            "當前計數:$_counter",
+            style: TextStyle(fontSize: 30),
+          )
+        ],
       ),
     );
   }
 
   Widget _getButton() {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center, //兩個按鈕畫面水平置中
       children: <Widget>[
         ElevatedButton(
           child: Text("+"),
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.blue), // 正確設置背景色
+            backgroundColor: MaterialStateProperty.all(Colors.blue), // 設置背景色為藍色
+            textStyle: MaterialStateProperty.all(
+              TextStyle(
+                fontSize: 40, // 設置文字大小為20
+                color: Colors.black, // 設置文字顏色為黑色
+              ),
+            ),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.zero, // 設置邊緣為方型
+              ),
+            ),
           ),
           onPressed: () => print("Click +"),
         ),
@@ -63,6 +82,17 @@ class _HomeContentState extends State<HomeContent> {
           child: Text("-"),
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.red), // 正確設置背景色
+            textStyle: MaterialStateProperty.all(
+              TextStyle(
+                fontSize: 40, // 設置文字大小為20
+                color: Colors.white, // 設置文字顏色為黑色
+              ),
+            ),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.zero, // 設置邊緣為方型
+              ),
+            ),
           ),
           onPressed: () => print("Click -"),
         ),
